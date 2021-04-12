@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace DatingAPI.Models
+namespace CIS3342_TermProject.Models
 {
     public class User
     {
@@ -16,6 +16,5 @@ namespace DatingAPI.Models
         public String Bio { get; set; }
         public String Location { get; set; }
         public String Password { get; set; }
-
     }
 }

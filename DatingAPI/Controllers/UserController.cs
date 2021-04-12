@@ -29,6 +29,7 @@ namespace DatingAPI.Controllers
             {
                 User user = new User();
 
+                user.UserID = int.Parse(record["UserID"].ToString());
                 user.UserName = record["UserName"].ToString();
                 user.EmailAddress = record["EmailAddress"].ToString();
                 user.PhoneNumber = record["PhoneNumber"].ToString();
@@ -49,7 +50,7 @@ namespace DatingAPI.Controllers
         [HttpGet("{UserID}", Name = "Get")]
         public User Get(int UserID)
         {
-            DataSet mydata = dBConnect.GetDataSet("SELECT * FROM Users");
+            DataSet mydata = dBConnect.GetDataSet("SELECT * FROM Users WHERE UserID = " + UserID);
             User user = new User();
 
             if (mydata.Tables[0].Rows.Count > 0)
