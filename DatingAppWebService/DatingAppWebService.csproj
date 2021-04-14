@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{416FBB1E-480B-49E0-B505-3A47DC485E66}</ProjectGuid>
+    <ProjectGuid>{2804B6CD-8762-483C-9CFF-A8C83B8E8C4C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CIS3342_TermProject</RootNamespace>
-    <AssemblyName>CIS3342_TermProject</AssemblyName>
+    <RootNamespace>DatingAppWebService</RootNamespace>
+    <AssemblyName>DatingAppWebService</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -67,93 +67,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CSS\signin.css" />
-    <Content Include="Default.aspx" />
-    <Content Include="Registration.aspx" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\DatingAppWebSvc\DatingApp.disco" />
+    <Content Include="DatingApp.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dating.Master.cs">
-      <DependentUpon>Dating.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Connection.cs" />
+    <Compile Include="DatingApp.asmx.cs">
+      <DependentUpon>DatingApp.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Dating.Master.designer.cs">
-      <DependentUpon>Dating.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Registration.aspx.cs">
-      <DependentUpon>Registration.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Registration.aspx.designer.cs">
-      <DependentUpon>Registration.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Web References\DatingAppWebSvc\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dating.Master" />
     <None Include="packages.config" />
-    <None Include="Web References\DatingAppWebSvc\DatingApp.wsdl" />
-    <Content Include="Web References\DatingAppWebSvc\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="images\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:63660/DatingApp.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\DatingAppWebSvc\</RelPath>
-      <UpdateFromURL>http://localhost:63660/DatingApp.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>CIS3342_TermProject_DatingAppWebSvc_DatingApp</CachedSettingsPropName>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DatingAppWebService\DatingAppWebService.csproj">
-      <Project>{2804b6cd-8762-483c-9cff-a8c83b8e8c4c}</Project>
-      <Name>DatingAppWebService</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -168,9 +101,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57729</DevelopmentServerPort>
+          <DevelopmentServerPort>63660</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57729/</IISUrl>
+          <IISUrl>http://localhost:63660/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
