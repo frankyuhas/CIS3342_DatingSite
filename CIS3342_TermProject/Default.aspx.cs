@@ -16,7 +16,7 @@ namespace CIS3342_TermProject
 
         protected void btnSubmit_signin_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("DatingClient.aspx"); 
         }
 
         protected void btnCreate_Account_Click(object sender, EventArgs e)

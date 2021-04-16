@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\signin.css" />
+    <Content Include="DatingClient.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Registration.aspx" />
     <None Include="Properties\Settings.settings">
@@ -84,6 +85,13 @@
     </Compile>
     <Compile Include="Dating.Master.designer.cs">
       <DependentUpon>Dating.Master</DependentUpon>
+    </Compile>
+    <Compile Include="DatingClient.aspx.cs">
+      <DependentUpon>DatingClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DatingClient.aspx.designer.cs">
+      <DependentUpon>DatingClient.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
