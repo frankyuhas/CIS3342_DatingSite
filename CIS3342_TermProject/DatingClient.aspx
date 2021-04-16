@@ -27,13 +27,12 @@
           <asp:GridView ID="gv_Users" runat="server" AutoGenerateColumns="False" GridLines="Horizontal" CssClass="table table-hover" BorderStyle="None" ShowHeader="False">
               <Columns>
                   <asp:BoundField DataField="UserName" HeaderText="Name" />
-                  <asp:BoundField DataField="Gender" HeaderText="Gender" />
-                  <%--<asp:TemplateField HeaderText="Age">
+                  <asp:TemplateField HeaderText="Age">
                       <itemtemplate>
 				            <%# CalculateAge(Convert.ToDateTime(Eval("Birthday"))) %>
 			          </itemtemplate>
-                  </asp:TemplateField>--%>
-                  <%--<asp:BoundField DataField="Birthday" HeaderText="Birthday" />--%>
+                  </asp:TemplateField>
+                  <asp:BoundField DataField="Gender" HeaderText="Gender" />
                   <asp:BoundField DataField="Bio" HeaderText="Bio" />
                   <asp:BoundField DataField="Location" HeaderText="Location" />
               </Columns>

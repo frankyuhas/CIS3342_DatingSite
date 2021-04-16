@@ -11,7 +11,7 @@ namespace CIS3342_TermProject.Models
         public String UserName { get; set; }
         public String EmailAddress { get; set; }
         public String PhoneNumber { get; set; }
-        public DateTime Birthdate { get; set; }
+        public DateTime Birthday { get; set; }
         public String Gender { get; set; }
         public String Bio { get; set; }
         public String Location { get; set; }
