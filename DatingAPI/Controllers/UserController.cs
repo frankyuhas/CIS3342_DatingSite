@@ -15,7 +15,6 @@ namespace DatingAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-
         DBConnect dBConnect = new DBConnect();
 
         // GET: api/User

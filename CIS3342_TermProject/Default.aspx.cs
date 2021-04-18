@@ -32,6 +32,7 @@ namespace CIS3342_TermProject
                 if (size > 0)
                 {
                     Session["UserID"] = dBConnect.GetField("UserID", 0);
+                    Session["EmailAddress"] = dBConnect.GetField("EmailAddress", 0);
                     Response.Redirect("DatingClient.aspx");
                 }
                 else

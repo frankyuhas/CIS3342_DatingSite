@@ -22,6 +22,9 @@
 
           <h1>Discover</h1>
           <asp:Button ID="btnShowUsers" runat="server" Text="Show Users" OnClick="btnShowUsers_Click" />
+
+          <asp:Label ID="lblLikedName" runat="server" Text=""></asp:Label>
+          <asp:Label ID="lblMatch" runat="server" Text=""></asp:Label>
           
           <asp:GridView ID="gv_Users" runat="server" AutoGenerateColumns="False" GridLines="Horizontal" CssClass="table table-hover" BorderStyle="None" ShowHeader="False" OnSelectedIndexChanged="gv_Users_SelectedIndexChanged">
               <Columns>
@@ -35,26 +38,18 @@
                   <asp:BoundField DataField="Gender" HeaderText="Gender" />
                   <asp:BoundField DataField="Bio" HeaderText="Bio" />
                   <asp:BoundField DataField="Location" HeaderText="Location" />
-                 
-                  <asp:CommandField ButtonType="Button" />
-                  
-                  
                   
                   <asp:TemplateField HeaderText="Like">
                       <ItemTemplate>
-                          <asp:Button ID="btnLike" runat="server" class="btn-outline-success" Text="Like" OnClick="btnLike_Click" />
+                          <asp:Button ID="btnLike" runat="server" class="btn-outline-success" Text="Like" CommandName="Like" OnClick="btnLike_Click" />
                       </ItemTemplate>
                   </asp:TemplateField>
-                  
-                  
-                  
+
                   <asp:TemplateField HeaderText="Pass">
                       <ItemTemplate>
-                          <asp:Button ID="BtnPass" runat="server" class="btn-outline-danger" Text="Pass" />
+                          <asp:Button ID="BtnPass" runat="server" class="btn-outline-danger" Text="Pass" CommandName="Pass" OnClick="BtnPass_Click" />
                       </ItemTemplate>
                   </asp:TemplateField>
-                  
-                  
                   
               </Columns>
           </asp:GridView>
