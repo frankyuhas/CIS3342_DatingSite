@@ -20,11 +20,21 @@ namespace CIS3342_TermProject
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             DatingAppWebService.User newUser = new DatingAppWebService.User();
+            int result = 0;
 
+            Boolean formComplete = isComplete();
+            Boolean validPhoneNumber = validPhone();
             //checks if passwords match, then creates a new user object
-            if (txtPassword.Text == txtReenterPassword.Text)
-            { 
+            if (formComplete == false)
+            {
+                Response.Write("<script>alert('Please Fill out the Form Completely')</script>");
                 
+            }
+            else if(validPhoneNumber == false){
+                Response.Write("<script>alert('Please Enter a Valid Phone Number')</script>");
+            }
+            else
+            {
                 newUser.UserName = txtName.Text;
                 newUser.Birthdate = DateTime.Parse(inputDate.Text);
                 newUser.EmailAddress = txtEmail.Text;
@@ -33,10 +43,11 @@ namespace CIS3342_TermProject
                 newUser.Bio = txtBio.Text;
                 newUser.Location = ddlState.SelectedItem.ToString();
                 newUser.Password = txtPassword.Text;
+                DatingAppWebService.DatingApp proxy = new DatingAppWebService.DatingApp();
+                result = proxy.AddNewUser(newUser);
             }
-
-            DatingAppWebService.DatingApp proxy = new DatingAppWebService.DatingApp();
-            int result = proxy.AddNewUser(newUser);
+            
+            
 
 
             if(result == 0)
@@ -49,6 +60,34 @@ namespace CIS3342_TermProject
 
             }
 
+        }
+
+        public Boolean isComplete()
+        {
+            Boolean flag = true;
+
+            if(txtName.Text == "" || txtEmail.Text == "" || txtPhone.Text == "" || txtBio.Text == "" || txtPassword.Text == "")
+            {
+                flag = false;
+            }
+
+          
+            
+
+            return flag;
+        }
+
+        public Boolean validPhone()
+        {
+            Boolean flag = true;
+            String phoneNumber = txtPhone.Text;
+
+            if (phoneNumber.Length != 9)
+            {
+                flag = false;
+            }
+
+            return flag;
         }
     }
 }
