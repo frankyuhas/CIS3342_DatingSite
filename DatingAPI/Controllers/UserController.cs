@@ -15,7 +15,6 @@ namespace DatingAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-
         DBConnect dBConnect = new DBConnect();
 
         // GET: api/User
@@ -23,7 +22,7 @@ namespace DatingAPI.Controllers
         public List<User> Get()
         {
             List<User> userList = new List<User>();
-            DataSet mydata = dBConnect.GetDataSet("SELECT * FROM Users");
+            DataSet mydata = dBConnect.GetDataSet("SELECT * FROM TP_Users");
 
             foreach (DataRow record in mydata.Tables[0].Rows)
             {
@@ -33,7 +32,7 @@ namespace DatingAPI.Controllers
                 user.UserName = record["UserName"].ToString();
                 user.EmailAddress = record["EmailAddress"].ToString();
                 user.PhoneNumber = record["PhoneNumber"].ToString();
-                user.Age = int.Parse(record["Age"].ToString());
+                user.Birthday = DateTime.Parse(record["Birthday"].ToString());
                 user.Gender = record["Gender"].ToString();
                 user.Bio = record["Bio"].ToString();
                 user.Location = record["Location"].ToString();
@@ -50,7 +49,7 @@ namespace DatingAPI.Controllers
         [HttpGet("{UserID}", Name = "Get")]
         public User Get(int UserID)
         {
-            DataSet mydata = dBConnect.GetDataSet("SELECT * FROM Users WHERE UserID = " + UserID);
+            DataSet mydata = dBConnect.GetDataSet("SELECT * FROM TP_Users WHERE UserID = " + UserID);
             User user = new User();
 
             if (mydata.Tables[0].Rows.Count > 0)
@@ -59,7 +58,7 @@ namespace DatingAPI.Controllers
                 user.UserName = record["UserName"].ToString();
                 user.EmailAddress = record["EmailAddress"].ToString();
                 user.PhoneNumber = record["PhoneNumber"].ToString();
-                user.Age = int.Parse(record["Age"].ToString());
+                user.Birthday = DateTime.Parse(record["Birthday"].ToString());
                 user.Gender = record["Gender"].ToString();
                 user.Bio = record["Bio"].ToString();
                 user.Location = record["Location"].ToString();

@@ -11,7 +11,7 @@ namespace DatingAPI.Models
         public String UserName { get; set; }
         public String EmailAddress { get; set; }
         public String PhoneNumber { get; set; }
-        public int Age { get; set; }
+        public DateTime Birthday { get; set; }
         public String Gender { get; set; }
         public String Bio { get; set; }
         public String Location { get; set; }

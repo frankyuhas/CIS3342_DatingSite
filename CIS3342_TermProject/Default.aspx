@@ -26,14 +26,14 @@
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
             <div class="form-floating">
-              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-              <label for="floatingInput">Email address</label>
+                <asp:TextBox ID="txtEmail" class="form-control" runat="server" placeholder="name@example.com"></asp:TextBox>
+              <label for="txtEmail">Email address</label>
             </div>
             <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <label for="floatingPassword">Password</label>
+                <asp:TextBox ID="txtPassword" class="form-control" runat="server" placeholder="password"></asp:TextBox>
+              <label for="txtPassword">Password</label>
             </div>
-
+            <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
             <%--<div class="checkbox mb-3">
               <label>
                 <input type="checkbox" value="remember-me"> Remember me
