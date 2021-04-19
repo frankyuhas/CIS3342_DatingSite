@@ -16,5 +16,6 @@ namespace CIS3342_TermProject.Models
         public String Bio { get; set; }
         public String Location { get; set; }
         public String Password { get; set; }
+        public String imgFile { get; set; }
     }
 }

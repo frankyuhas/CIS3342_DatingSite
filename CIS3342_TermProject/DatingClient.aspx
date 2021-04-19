@@ -13,12 +13,13 @@
     <link rel="stylesheet" href="/resources/demos/style.css"/>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="CSS/GridStyle.css" />
     
     <title>Dating Master</title>
   </head>
   <body>
 
-      <div class="container-fluid w-50 align-top" style="padding-top: 75px;">
+      <div class="container-fluid align-top" style="padding-top: 75px;">
 
           <h1>Discover</h1>
           <asp:Button ID="btnShowUsers" runat="server" Text="Show Users" OnClick="btnShowUsers_Click" />
@@ -26,9 +27,12 @@
           <asp:Label ID="lblLikedName" runat="server" Text=""></asp:Label>
           <asp:Label ID="lblMatch" runat="server" Text=""></asp:Label>
           
-          <asp:GridView ID="gv_Users" runat="server" AutoGenerateColumns="False" GridLines="Horizontal" CssClass="table table-hover" BorderStyle="None" ShowHeader="False" OnSelectedIndexChanged="gv_Users_SelectedIndexChanged">
+          <asp:GridView ID="gv_Users"  runat="server" AutoGenerateColumns="False" GridLines="Horizontal" CssClass="table table-hover table-bordered" BorderStyle="None" OnSelectedIndexChanged="gv_Users_SelectedIndexChanged">
               <Columns>
                   <asp:CommandField SelectText="View" ShowSelectButton="True" />
+                  <asp:ImageField DataImageUrlField="imgFile" HeaderText="Profile Picture">
+                      <ItemStyle Height="50px" Width="50px" />
+                  </asp:ImageField>
                   <asp:BoundField DataField="UserName" HeaderText="Name" />
                   <asp:TemplateField HeaderText="Age">
                       <itemtemplate>
@@ -57,22 +61,35 @@
 
       </div>
 
-      <div class="container-fluid w-50 align-top" style="padding-top: 75px;">
+      <div class="container-fluid align-top" id="displayUser" style="padding-top: 75px;" runat="server">
 
-          <div class="row">
-              <div class="col-sm-4">
-                  <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
-                  <br />
-                  <asp:Label ID="lblAge" runat="server" Text=""></asp:Label>
-                  <br />
-                  <asp:Label ID="lblGender" runat="server" Text=""></asp:Label>
-                  <br />
-                  <asp:Label ID="lblLocation" runat="server" Text=""></asp:Label>
-                  <br />
-                  <asp:Label ID="lblBio" runat="server" Text=""></asp:Label>
+          <div class="card w-50 mx-auto">
+              <div class="card-body mx-auto w-100">
+                  <div class="row mx-auto">
+                      <div class="col">
+                          <img ID="profilePicture" runat="server" src="" style="height: 300px; width: 300px;"/>    
+                      </div>
+                  </div>
+                  <div class="row mx-auto">
+                      <div class="col mx-auto">
+                          <asp:Label ID="lblUserName" runat="server" Text="" CssClass="h2"></asp:Label>
+                      </div>
+                      <div class="col mx-auto">
+                          <asp:Label ID="lblAge" runat="server" Text="" CssClass="h2"></asp:Label>
+                      </div>
+                  </div>
+                  <div class="row mx-auto">
+                      <div class="col mx-auto">
+                          <asp:Label ID="lblGender" runat="server" Text=""></asp:Label>
+                          <br />
+                          <asp:Label ID="lblLocation" runat="server" Text=""></asp:Label>
+                          <br />
+                          <asp:Label ID="lblBio" runat="server" Text=""></asp:Label>
+                      </div>
+                  </div>
               </div>
-
           </div>
+          
       </div>
 
 

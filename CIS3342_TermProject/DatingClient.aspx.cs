@@ -10,6 +10,8 @@ using System.IO;                        // needed for Stream and Stream Reader
 using System.Net;                       // needed for the Web Request
 using CIS3342_TermProject.Models;
 using System.Collections;
+using System.Reflection;
+using System.Data;
 
 namespace CIS3342_TermProject
 {
@@ -23,7 +25,8 @@ namespace CIS3342_TermProject
             {
                 if (Session["EmailAddress"] != null)
                 {
-                    userList = getAllUsers();
+                    displayUserInfo(false);
+                    getAllUsers();
                 }
             }
         }
@@ -31,7 +34,7 @@ namespace CIS3342_TermProject
         protected void btnShowUsers_Click(object sender, EventArgs e)
         {
             List<User> users = getAllUsers();
-
+            displayUserInfo(false);
             gv_Users.DataSource = users;
             gv_Users.DataBind();
         }
@@ -52,24 +55,30 @@ namespace CIS3342_TermProject
             //WebRequest request = WebRequest.Create("http://cis-iis2.temple.edu/Users/pascucci/CIS3342/CoreWebAPI/api/teams/");
             WebRequest request = WebRequest.Create("https://localhost:44315/api/user");
             WebResponse response = request.GetResponse();
+
             // Read the data from the Web Response, which requires working with streams.
             Stream theDataStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(theDataStream);
             String data = reader.ReadToEnd();
             reader.Close();
             response.Close();
+
             // Deserialize a JSON string that contains an array of JSON objects into an Array of Team objects.
             JavaScriptSerializer js = new JavaScriptSerializer();
             User[] users = js.Deserialize<User[]>(data);
+
+            //userList = users;
+            //ListtoDataTableConverter converter = new ListtoDataTableConverter();
+            //DataTable dt = converter.ToDataTable(userList);
 
             List<User> userList = new List<User>();
             int userID = int.Parse(Session["UserID"].ToString());
 
             for (int i = 0; i < users.Length; i++)
             {
-                if(users[i].UserID != int.Parse(Session["UserID"].ToString()))
+                if (users[i].UserID != int.Parse(Session["UserID"].ToString()))
                 {
-                    if(checkLike(userID, users[i].UserID) == true)
+                    if (checkLike(userID, users[i].UserID) == true)
                     {
                         //yeehaw
                     }
@@ -80,8 +89,14 @@ namespace CIS3342_TermProject
                 }
             }
 
+            //foreach(DataRow tempRow in dt.Rows)
+            //{
+            //    tempRow["imgFile"] = "ImageGrab.aspx?ID=" + tempRow["UserID"];
+            //}
 
             return userList;
+            //gv_Users.DataSource = dt;
+            //gv_Users.DataBind();
         }
 
         public List<Like> GetLikes(int UserID)
@@ -126,6 +141,7 @@ namespace CIS3342_TermProject
             lblGender.Text = users[selected].Gender.ToString();
             lblLocation.Text = users[selected].Location.ToString();
             lblBio.Text = users[selected].Bio.ToString();
+            profilePicture.Src = "ImageGrab.aspx?ID=" + users[selected].UserID;
 
             //String index = (gv_Users.Rows[selected].Cells[6].Text).ToString();
 
@@ -136,15 +152,18 @@ namespace CIS3342_TermProject
         {
             gv_Users.Visible = tf;
             btnShowUsers.Visible = tf;
+            
         }
 
         public void displayUserInfo(Boolean tf)
         {
-            lblUserName.Visible = tf;
-            lblAge.Visible = tf;
-            lblBio.Visible = tf;
-            lblGender.Visible = tf;
-            lblLocation.Visible = tf;
+            //lblUserName.Visible = tf;
+            //lblAge.Visible = tf;
+            //lblBio.Visible = tf;
+            //lblGender.Visible = tf;
+            //lblLocation.Visible = tf;
+            //profilePicture.Visible = tf;
+            displayUser.Visible = tf;
         }
 
         public void displaySelectedUser(int index)
@@ -386,5 +405,31 @@ namespace CIS3342_TermProject
             bindUsers();
 
         }
+
+        //public class ListtoDataTableConverter
+        //{
+        //    public DataTable ToDataTable<T>(List<T> items)
+        //    {
+        //        DataTable dataTable = new DataTable(typeof(T).Name);
+
+        //        PropertyInfo[] Props = typeof(T).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+        //        foreach(PropertyInfo prop in Props)
+        //        {
+        //            dataTable.Columns.Add(prop.Name);
+        //        }
+        //        foreach (T item in items)
+        //        {
+        //            var values = new object[Props.Length];
+        //            for (int i = 0; i < Props.Length; i++)
+        //            {
+        //                //inserting property values to datatable rows
+        //                values[i] = Props[i].GetValue(item, null);
+        //            }
+        //            dataTable.Rows.Add(values);
+        //        }
+        //        //put a breakpoint here and check datatable
+        //        return dataTable;
+        //    }
+        //}
     }
 }

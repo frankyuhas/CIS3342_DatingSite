@@ -42,12 +42,16 @@ namespace DatingAppWebService
                 addUserCmd.Parameters.AddWithValue("@bio", newUser.Bio);
                 addUserCmd.Parameters.AddWithValue("@password", newUser.Password);
 
-                int result = objDB.DoUpdateUsingCmdObj(addUserCmd);
+                DataSet data = objDB.GetDataSetUsingCmdObj(addUserCmd);
 
-                if(result == 0)
+                int userId = Int32.Parse(data.Tables[0].Rows[0][0].ToString());
+
+                if(userId < 0)
                 {
-                    return 0;
+                    return -1;
                 }
+
+                return userId;
             }
 
             return -1;

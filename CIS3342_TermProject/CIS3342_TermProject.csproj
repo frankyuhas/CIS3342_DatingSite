@@ -67,9 +67,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\GridStyle.css" />
     <Content Include="CSS\signin.css" />
     <Content Include="DatingClient.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="ImageGrab.aspx" />
     <Content Include="Registration.aspx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -99,6 +101,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImageGrab.aspx.cs">
+      <DependentUpon>ImageGrab.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImageGrab.aspx.designer.cs">
+      <DependentUpon>ImageGrab.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\Match.cs" />

@@ -144,6 +144,21 @@
                         </asp:DropDownList>
                     </div>
                 </div>
+
+                <div class="row p-2 mx-auto">
+                    <div class="col">
+                        <asp:Label ID="lblInterestedIn" runat="server" Text="Interested in:"></asp:Label>
+                        <asp:DropDownList ID="ddlInterestedIn" runat="server" CssClass="form-select">
+                            <asp:ListItem>Male</asp:ListItem>
+                            <asp:ListItem>Female</asp:ListItem>
+                            <asp:ListItem>Non-Binary</asp:ListItem>
+                            <asp:ListItem>Any</asp:ListItem>                            
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col mx-auto" style="text-align:center;">
+                        <asp:FileUpload ID="fileProfilePicture" runat="server" CssClass="form-control-file" />
+                    </div>
+                </div>
                 <div class="row p-2 mx-auto">
                     <div class="col">
                         <asp:Label ID="lblBio" runat="server" Text="Your Bio:"></asp:Label>

@@ -30,7 +30,7 @@
               <label for="txtEmail">Email address</label>
             </div>
             <div class="form-floating">
-                <asp:TextBox ID="txtPassword" class="form-control" runat="server" placeholder="password"></asp:TextBox>
+                <asp:TextBox ID="txtPassword" class="form-control" runat="server" placeholder="password" TextMode="Password"></asp:TextBox>
               <label for="txtPassword">Password</label>
             </div>
             <asp:Label ID="lblError" runat="server" Text=""></asp:Label>

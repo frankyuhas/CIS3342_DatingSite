@@ -24,6 +24,12 @@ namespace DatingAPI.Controllers
             List<User> userList = new List<User>();
             DataSet mydata = dBConnect.GetDataSet("SELECT * FROM TP_Users");
 
+            mydata.Tables[0].Columns.Add("imgFile");
+            foreach(DataRow tempRow in mydata.Tables[0].Rows)
+            {
+                tempRow["imgFile"] = "ImageGrab.aspx?ID=" + tempRow["UserID"];
+            }
+
             foreach (DataRow record in mydata.Tables[0].Rows)
             {
                 User user = new User();
@@ -37,6 +43,7 @@ namespace DatingAPI.Controllers
                 user.Bio = record["Bio"].ToString();
                 user.Location = record["Location"].ToString();
                 user.Password = record["Password"].ToString();
+                user.imgFile = record["imgFile"].ToString();
 
                 userList.Add(user);
 
@@ -52,6 +59,12 @@ namespace DatingAPI.Controllers
             DataSet mydata = dBConnect.GetDataSet("SELECT * FROM TP_Users WHERE UserID = " + UserID);
             User user = new User();
 
+            mydata.Tables[0].Columns.Add("imgFile");
+            foreach (DataRow tempRow in mydata.Tables[0].Rows)
+            {
+                tempRow["imgFile"] = "ImageGrab.aspx?ID=" + tempRow["UserID"];
+            }
+
             if (mydata.Tables[0].Rows.Count > 0)
             {
                 DataRow record = mydata.Tables[0].Rows[0];
@@ -63,6 +76,7 @@ namespace DatingAPI.Controllers
                 user.Bio = record["Bio"].ToString();
                 user.Location = record["Location"].ToString();
                 user.Password = record["Password"].ToString();
+                user.imgFile = record["imgFile"].ToString();
             }
 
             return user;
