@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace DatingAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class ValuesController : ControllerBase
+    //[ApiController]
+    public class ValuesController : Controller
     {
         // GET api/values
         [HttpGet]

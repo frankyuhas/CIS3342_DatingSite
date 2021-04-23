@@ -12,8 +12,8 @@ using DatingAPI.Models;
 namespace DatingAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class LikeController : ControllerBase
+    //[ApiController]
+    public class LikeController : Controller
     {
         DBConnect dBConnect = new DBConnect();
         // GET: api/Like
