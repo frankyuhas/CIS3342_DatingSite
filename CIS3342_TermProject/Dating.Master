@@ -49,8 +49,9 @@
                           <a class="nav-link" href="DatingClient.aspx">Discover</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="#">Matches</a>
+                          <a class="nav-link" href="Matches.aspx">Matches</a>
                       </li>
+                      
                   </ul>
               </div>
           </div>

@@ -12,8 +12,8 @@ using DatingAPI.Models;
 namespace DatingAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class UserController : ControllerBase
+    //[ApiController]
+    public class UserController : Controller
     {
         DBConnect dBConnect = new DBConnect();
 
