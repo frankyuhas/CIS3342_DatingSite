@@ -24,8 +24,14 @@ namespace DatingAPI.Controllers
             DataSet myMessages = dbConnect.GetDataSet("SELECT * FROM TP_Messages WHERE SenderID=" + UserID + " AND ReceiverID=" + UserID2);
             DataSet myMessages2 = dbConnect.GetDataSet("SELECT * FROM TP_Messages WHERE ReceiverID=" + UserID + " AND SenderID=" + UserID2);
             myMessages.Merge(myMessages2);
-       
-            myMessages.Tables[0].DefaultView.Sort = "SentDate DESC";
+            //myMessages.Tables[0].DefaultView.Sort = "SentDate desc";
+
+
+            DataSet names1 = dbConnect.GetDataSet("SELECT UserName FROM TP_Users WHERE UserID=" + UserID);
+            String senderName = names1.Tables[0].Rows[0]["UserName"].ToString();
+
+            DataSet names2 = dbConnect.GetDataSet("SELECT UserName FROM TP_Users WHERE UserID=" + UserID2);
+            String receiverName = names2.Tables[0].Rows[0]["UserName"].ToString();
 
             foreach(DataRow record in myMessages.Tables[0].Rows)
             {
@@ -35,10 +41,21 @@ namespace DatingAPI.Controllers
                 message.SenderID = int.Parse(record["SenderID"].ToString());
                 message.Content = record["Content"].ToString();
                 message.DateSent = DateTime.Parse(record["SentDate"].ToString());
+                if(message.ReceiverID == UserID)
+                {
+                    message.SenderName = receiverName;
+                }
+                else
+                {
+                    message.SenderName = senderName;
+                }
+                
                 messages.Add(message);
             }
 
-            return messages;
+            List<Message> orderedMessages = messages.OrderBy(m => m.DateSent).ToList();
+
+            return orderedMessages;
         }
 
 

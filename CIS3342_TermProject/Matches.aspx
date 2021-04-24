@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!doctype html>
 
-<html lang="en">
+
   <head>
     <%--<meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -19,9 +19,9 @@
     <br />
     <br />
     <br />
-    <div class="container-fluid">
+    <div class="container">
         <h3>Your Matches</h3>
-        <asp:GridView ID="gvMatches" runat="server" AutoGenerateColumns="False" CssClass="table table-hover table-bordered" OnRowCommand="gvMatches_RowCommand">
+        <asp:GridView ID="gvMatches" runat="server" AutoGenerateColumns="False" CssClass="table border-0 table-responsive" OnRowCommand="gvMatches_RowCommand">
             <Columns>
                 <asp:BoundField DataField="UserName" HeaderText="Name" />
                 <asp:ImageField DataImageUrlField="imgFile" HeaderText="Profile Picture">
@@ -35,7 +35,7 @@
 			        </itemtemplate>
                 </asp:TemplateField>
                 
-                <asp:ButtonField HeaderText="Message" Text="Message" />
+                <asp:ButtonField HeaderText="Message" Text="Message" ButtonType="Button"/>
                 
             </Columns>
         </asp:GridView>
