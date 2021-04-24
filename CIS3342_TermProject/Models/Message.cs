@@ -12,5 +12,7 @@ namespace CIS3342_TermProject.Models
         public int ReceiverID { get; set; }
         public String Content { get; set; }
         public DateTime DateSent { get; set; }
+        public String SenderName { get; set; }
+        public String ReceiverName { get; set; }
     }
 }

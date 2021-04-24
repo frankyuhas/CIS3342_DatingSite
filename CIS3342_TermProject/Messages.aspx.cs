@@ -13,6 +13,7 @@ namespace CIS3342_TermProject
 {
     public partial class Messages : System.Web.UI.Page
     {
+        List<Message> messagesList = new List<Message>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -25,6 +26,7 @@ namespace CIS3342_TermProject
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
+            int receiver = Int32.Parse(Request.QueryString["Id"]);
             Message newMessage = new Message();
 
             newMessage.SenderID = int.Parse(Session["UserID"].ToString());
@@ -65,11 +67,16 @@ namespace CIS3342_TermProject
                 lblMessageSent.Text = "Error: " + ex.Message;
             }
 
+            txtMessage.Text = "";
+            getMessages(receiver);
+            rptMessages.DataSource = messagesList;
+            rptMessages.DataBind();
+
         }
 
         public void getMessages(int receiver)
         {
-            List<Message> messagesList = new List<Message>();
+            messagesList.Clear(); 
 
             int senderID = Int32.Parse(Session["UserID"].ToString());
 
@@ -93,5 +100,11 @@ namespace CIS3342_TermProject
             rptMessages.DataSource = messagesList;
             rptMessages.DataBind();
         }
+
+        //protected void RepeaterDataBound(Object sender, RepeaterItemEventArgs e)
+        //{
+        //    if(e.Item.)
+        //        OnItemDataBound = "RepeaterDataBaound"
+        //}
     }
 }
