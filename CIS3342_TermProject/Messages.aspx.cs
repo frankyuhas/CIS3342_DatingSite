@@ -65,6 +65,8 @@ namespace CIS3342_TermProject
                 lblMessageSent.Text = "Error: " + ex.Message;
             }
 
+            Response.Redirect("Messages.aspx?Id=" + Int32.Parse(Request.QueryString["Id"]));
+
         }
 
         public void getMessages(int receiver)
