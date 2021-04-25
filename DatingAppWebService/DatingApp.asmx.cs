@@ -56,5 +56,59 @@ namespace DatingAppWebService
 
             return -1;
         }
+
+        [WebMethod]
+        public Boolean UpdateUser(User newUser) //web service method to update user to db using stored procedure
+        {
+            DBConnect objDB = new DBConnect();
+
+
+            if (newUser != null)
+            {
+                SqlCommand UpdateUserCmd = new SqlCommand();
+
+                UpdateUserCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                UpdateUserCmd.CommandText = "TP_UpdateUser";
+
+                UpdateUserCmd.Parameters.AddWithValue("@userID", newUser.UserID);
+                UpdateUserCmd.Parameters.AddWithValue("@userName", newUser.UserName);
+                UpdateUserCmd.Parameters.AddWithValue("@gender", newUser.Gender);
+                UpdateUserCmd.Parameters.AddWithValue("@location", newUser.Location);
+                UpdateUserCmd.Parameters.AddWithValue("@bio", newUser.Bio);
+
+                DataSet data = objDB.GetDataSetUsingCmdObj(UpdateUserCmd);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        [WebMethod]
+        public Boolean DeleteUser(int userID) //web service method to delete user to db using stored procedure
+        {
+            DBConnect objDB = new DBConnect();
+
+            try
+            {
+                SqlCommand DeleteUserCmd = new SqlCommand();
+
+                DeleteUserCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                DeleteUserCmd.CommandText = "TP_DeleteUser";
+
+                DeleteUserCmd.Parameters.AddWithValue("@userID", userID);
+
+                DataSet data = objDB.GetDataSetUsingCmdObj(DeleteUserCmd);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+                
+        }
+
     }
 }

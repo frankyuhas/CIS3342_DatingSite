@@ -51,7 +51,6 @@ namespace CIS3342_TermProject
         {
             // This method will be used for getting the current list of users that the client has not liked or passed yet
 
-            // Create an HTTP Web Request and get the HTTP Web Response from the server.
             //WebRequest request = WebRequest.Create("http://cis-iis2.temple.edu/Users/pascucci/CIS3342/CoreWebAPI/api/teams/");
             WebRequest request = WebRequest.Create("https://localhost:44315/api/user");
             WebResponse response = request.GetResponse();
@@ -84,7 +83,29 @@ namespace CIS3342_TermProject
                     }
                     else
                     {
-                        userList.Add(users[i]);
+                        if (ddlState.SelectedValue == "ANY")
+                        {
+                            if(ddlGender.SelectedValue == "Any")
+                            {
+                                userList.Add(users[i]);
+                            }
+                            else if(ddlGender.SelectedValue == users[i].Gender)
+                            {
+                                userList.Add(users[i]);
+                            }
+                        }
+                        else if (ddlState.SelectedItem.ToString() == users[i].Location)
+                        {
+
+                            if (ddlGender.SelectedValue == "Any")
+                            {
+                                userList.Add(users[i]);
+                            }
+                            else if (ddlGender.SelectedValue == users[i].Gender)
+                            {
+                                userList.Add(users[i]);
+                            }
+                        }
                     }
                 }
             }
@@ -152,7 +173,10 @@ namespace CIS3342_TermProject
         {
             gv_Users.Visible = tf;
             btnShowUsers.Visible = tf;
-            
+            lblState2.Visible = tf;
+            ddlState.Visible = tf;
+            lblGender2.Visible = tf;
+            ddlGender.Visible = tf;
         }
 
         public void displayUserInfo(Boolean tf)
@@ -404,6 +428,22 @@ namespace CIS3342_TermProject
             }
             bindUsers();
 
+        }
+
+        protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<User> users = getAllUsers();
+            displayUserInfo(false);
+            gv_Users.DataSource = users;
+            gv_Users.DataBind();
+        }
+
+        protected void ddlGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<User> users = getAllUsers();
+            displayUserInfo(false);
+            gv_Users.DataSource = users;
+            gv_Users.DataBind();
         }
 
         //public class ListtoDataTableConverter
