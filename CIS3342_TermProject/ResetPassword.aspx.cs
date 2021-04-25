@@ -14,7 +14,7 @@ using System.Net;
 
 namespace CIS3342_TermProject
 {
-    public partial class ForgotPassword : System.Web.UI.Page
+    public partial class ResetPassword : System.Web.UI.Page
     {
         private Byte[] key = { 250, 101, 18, 76, 45, 135, 207, 118, 4, 171, 3, 168, 202, 241, 37, 199 };
         private Byte[] vector = { 146, 64, 191, 111, 23, 3, 113, 119, 231, 121, 252, 112, 79, 32, 114, 156 };
@@ -64,14 +64,14 @@ namespace CIS3342_TermProject
                     lblSecurityQuestion.Text = question3;
                 }
 
-                
+
             }
             else
             {
                 lblError.Visible = true;
                 lblError.Text = "Please enter an Email.";
             }
-            
+
         }
 
         protected void btnAnswerSecQuestion_Click(object sender, EventArgs e)
@@ -87,7 +87,7 @@ namespace CIS3342_TermProject
 
             String correctAnswer = myData.Tables[0].Rows[0][questionNum - 1].ToString();
 
-            if(answer == correctAnswer)
+            if (answer == correctAnswer)
             {
                 lblError.Visible = true;
                 lblError.Text = "Correct";
@@ -134,7 +134,7 @@ namespace CIS3342_TermProject
             String sqlStr = "UPDATE TP_Users SET Password='" + encryptedPassword + "' WHERE EmailAddress='" + userEmail + "'";
             int result = objDB.DoUpdate(sqlStr);
 
-            if(result == -1)
+            if (result == -1)
             {
                 lblError.Visible = true;
                 lblError.Text = "Error";

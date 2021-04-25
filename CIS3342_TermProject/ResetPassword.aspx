@@ -1,9 +1,24 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dating.Master" AutoEventWireup="true" CodeBehind="ForgotPassword.aspx.cs" Inherits="CIS3342_TermProject.ForgotPassword" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <br />
-    <br />
-    <br />
-    <div class="container">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ResetPassword.aspx.cs" Inherits="CIS3342_TermProject.ResetPassword" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <title>Dating Site</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"/>
+    
+</head>
+<body>
+    <form id="form1" runat="server">
+        <br />
+        <br />
+        <br />
+        <div class="container">
         <div class="card w-75 mx-auto">
             <div class="card-body">
                 <div class="row">
@@ -45,5 +60,6 @@
 
         </div>
     </div>
-        
-</asp:Content>
+    </form>
+</body>
+</html>

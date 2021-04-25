@@ -71,7 +71,6 @@
     <Content Include="CSS\signin.css" />
     <Content Include="DatingClient.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="ForgotPassword.aspx" />
     <Content Include="ImageGrab.aspx" />
     <Content Include="Matches.aspx" />
     <Content Include="Messages.aspx" />
@@ -82,6 +81,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Web References\DatingAppWebSvc\DatingApp.disco" />
+    <Content Include="ResetPassword.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -105,13 +105,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ForgotPassword.aspx.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ForgotPassword.aspx.designer.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="ImageGrab.aspx.cs">
       <DependentUpon>ImageGrab.aspx</DependentUpon>
@@ -157,6 +150,13 @@
     </Compile>
     <Compile Include="Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web References\DatingAppWebSvc\Reference.cs">
       <AutoGen>True</AutoGen>
