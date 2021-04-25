@@ -211,6 +211,60 @@ namespace CIS3342_TermProject {
         protected global::System.Web.UI.WebControls.TextBox txtReenterPassword;
         
         /// <summary>
+        /// lblSecQuestion1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSecQuestion1;
+        
+        /// <summary>
+        /// txtSecQuestion1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSecQuestion1;
+        
+        /// <summary>
+        /// lblSecQuestion2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSecQuestion2;
+        
+        /// <summary>
+        /// txtSecQuestion2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSecQuestion2;
+        
+        /// <summary>
+        /// lblSecQuestion3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSecQuestion3;
+        
+        /// <summary>
+        /// txtSecQuestion3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSecQuestion3;
+        
+        /// <summary>
         /// btnSubmit control.
         /// </summary>
         /// <remarks>

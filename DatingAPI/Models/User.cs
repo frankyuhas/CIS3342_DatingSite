@@ -17,6 +17,8 @@ namespace DatingAPI.Models
         public String Location { get; set; }
         public String Password { get; set; }
         public String imgFile { get; set; }
-
+        public String SecAnswer1 { get; set; }
+        public String SecAnswer2 { get; set; }
+        public String SecAnswer3 { get; set; }
     }
 }
