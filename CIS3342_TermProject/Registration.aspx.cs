@@ -49,6 +49,7 @@ namespace CIS3342_TermProject
 
             uploadPhotoToDB(userId);
 
+            Response.Redirect("Default.aspx");
 
             //if(userId == 0)
             //{
@@ -66,7 +67,7 @@ namespace CIS3342_TermProject
         {
             Boolean flag = true;
 
-            if(txtName.Text == "" || txtEmail.Text == "" || txtPhone.Text == "" || txtBio.Text == "" || txtPassword.Text == "")
+            if(txtName.Text == "" || txtEmail.Text == "" || txtPhone.Text == "" || txtBio.Text == "" || txtPassword.Text == "" || fileProfilePicture.HasFile == false)
             {
                 flag = false;
             }
@@ -128,6 +129,11 @@ namespace CIS3342_TermProject
                     {
                         Response.Write("<script>alert('Only jpg, bmp, and gif file formats supported.')</script>");
                     }
+                }
+                else
+                {
+                    Response.Write("<script>Please Upload a Profie Photo</script>");
+                    return;
                 }
                 
             }
