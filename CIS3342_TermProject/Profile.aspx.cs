@@ -37,7 +37,7 @@ namespace CIS3342_TermProject
             User user = GetUser(UserID);
 
             lblUserName.Text = user.UserName.ToString();
-            lblAge.Text = CalculateAge(user.Birthdate).ToString();
+            lblAge.Text = CalculateAge(user.Birthday).ToString();
             lblGender.Text = user.Gender.ToString();
             lblLocation.Text = user.Location.ToString();
             lblBio.Text = user.Bio.ToString();

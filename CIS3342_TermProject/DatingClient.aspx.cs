@@ -158,7 +158,7 @@ namespace CIS3342_TermProject
             List<User> users = getAllUsers();
 
             lblUserName.Text = users[selected].UserName.ToString();
-            lblAge.Text = CalculateAge(users[selected].Birthdate).ToString();
+            lblAge.Text = CalculateAge(users[selected].Birthday).ToString();
             lblGender.Text = users[selected].Gender.ToString();
             lblLocation.Text = users[selected].Location.ToString();
             lblBio.Text = users[selected].Bio.ToString();
