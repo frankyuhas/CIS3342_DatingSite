@@ -114,5 +114,54 @@ namespace DatingAppWebService
                 
         }
 
+        [WebMethod]
+        public Boolean generateVerification(string username, string verifyCode)
+        {
+            DBConnect objDB = new DBConnect();
+            SqlCommand verifyCmd = new SqlCommand();
+
+            verifyCmd.CommandType = CommandType.StoredProcedure;
+            verifyCmd.CommandText = "TP_GenerateVerification";
+
+            verifyCmd.Parameters.AddWithValue("@username", username);
+            verifyCmd.Parameters.AddWithValue("@code", verifyCode);
+
+            int success = objDB.DoUpdateUsingCmdObj(verifyCmd);
+
+            if(success > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        [WebMethod]
+        public Boolean updateVerification(string username)
+        {
+            DBConnect objDB = new DBConnect();
+            SqlCommand update = new SqlCommand();
+
+            update.CommandType = CommandType.StoredProcedure;
+            update.CommandText = "TP_UpdateVerified";
+            update.Parameters.AddWithValue("@username", username);
+
+            int success = objDB.DoUpdateUsingCmdObj(update);
+
+            if(success > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
     }
 }
