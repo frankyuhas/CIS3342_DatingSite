@@ -34,7 +34,7 @@
     </header>
    
     <form id="form1" runat="server">
-
+        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
     <%--registration form start--%>
         <div class="container-fluid w-50" style="padding-top: 75px;">
             <div class="card">

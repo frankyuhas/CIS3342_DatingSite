@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -81,12 +83,21 @@ namespace CIS3342_TermProject
                 
 
                 userId = proxy.AddNewUser(newUser);
+
+                if(userId != -1)
+                {
+                    Boolean email = generateVerification(txtName.Text, txtEmail.Text);
+                }
             }
+
+
+            Session["UserName"] = txtName.Text;
+            Session["EmailAddress"] = txtEmail.Text;
 
             uploadPhotoToDB(userId);
 
             
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Verification.aspx");
 
             //if(userId == 0)
             //{
@@ -178,6 +189,59 @@ namespace CIS3342_TermProject
             {
                 Response.Write("<script>alert('Error ocurred)</script>");
             }
+        }
+
+        public Boolean generateVerification(string username, string email)
+        {
+            char[] chArray = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+            string str = string.Empty;
+            Random random = new Random();
+
+            for(int i = 0; i < 7; i++)
+            {
+                int index = random.Next(1, chArray.Length);
+                if (!str.Contains(chArray.GetValue(index).ToString()))
+                {
+                    str = str + chArray.GetValue(index);
+                }
+                else
+                {
+                    i--;
+                }
+            }
+
+            DatingAppWebService.DatingApp proxy = new DatingAppWebService.DatingApp();
+            Boolean result = proxy.generateVerification(username, str);
+
+            //Email newEmail = new Email();
+            String strTo = email;
+            String strFrom = "lovefinderdating@gmail.com";
+            String strSubject = "Verifcation for Love Finder account";
+            String strMessage = "Your Verification Code is " + str + ". Please enter it on the application.";
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Credentials = new NetworkCredential(strFrom, "BigPassword123!");
+            smtp.Timeout = 20000;
+
+            try
+            {
+                MailMessage message = new MailMessage(strFrom, strTo);
+                message.Subject = strSubject;
+                message.Body = strMessage;
+                smtp.Send(message);
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = "The email failed to send.";
+                return false;
+            }
+
+
+            return true;
         }
     }
 }

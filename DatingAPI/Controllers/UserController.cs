@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Utilities;
 using System.Data;
 using DatingAPI.Models;
+using System.Data.SqlClient;
 
 namespace DatingAPI.Controllers
 {
@@ -100,6 +101,22 @@ namespace DatingAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        [HttpGet("GetVerificationCode/{username}")]
+        public string GetVerificationCode(string username)
+        {
+            DBConnect objDB = new DBConnect();
+            SqlCommand getCode = new SqlCommand();
+
+            getCode.CommandType = CommandType.StoredProcedure;
+            getCode.CommandText = "TP_GetVerificationCode";
+            getCode.Parameters.AddWithValue("@username", username);
+
+            DataSet data = objDB.GetDataSetUsingCmdObj(getCode);
+            string code = data.Tables[0].Rows[0][1].ToString();
+
+            return code;
         }
     }
 }
