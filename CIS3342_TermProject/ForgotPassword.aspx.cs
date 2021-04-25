@@ -7,10 +7,17 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
 
+using System.Security.Cryptography;
+using System.IO;
+using System.Text;
+using System.Net;
+
 namespace CIS3342_TermProject
 {
     public partial class ForgotPassword : System.Web.UI.Page
     {
+        private Byte[] key = { 250, 101, 18, 76, 45, 135, 207, 118, 4, 171, 3, 168, 202, 241, 37, 199 };
+        private Byte[] vector = { 146, 64, 191, 111, 23, 3, 113, 119, 231, 121, 252, 112, 79, 32, 114, 156 };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -95,10 +102,36 @@ namespace CIS3342_TermProject
         protected void btnSubmitNewPass_Click(object sender, EventArgs e)
         {
             String userEmail = txtEmail.Text;
-            String newPass = txtNewPassword.Text;
+
+            String plainTextPassword = txtNewPassword.Text;
+            String encryptedPassword;
+
+            UTF8Encoding encoder = new UTF8Encoding();
+            Byte[] textBytes;
+            textBytes = encoder.GetBytes(plainTextPassword);
+
+            RijndaelManaged rmEncryption = new RijndaelManaged();
+            MemoryStream myMemoryStream = new MemoryStream();
+            CryptoStream myEncryptionStream = new CryptoStream(myMemoryStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
+
+            myEncryptionStream.Write(textBytes, 0, textBytes.Length);
+            myEncryptionStream.FlushFinalBlock();
+
+            myMemoryStream.Position = 0;
+            Byte[] encryptedBytes = new Byte[myMemoryStream.Length];
+            myMemoryStream.Read(encryptedBytes, 0, encryptedBytes.Length);
+
+            myEncryptionStream.Close();
+            myMemoryStream.Close();
+
+            encryptedPassword = Convert.ToBase64String(encryptedBytes);
+
+
+
+
 
             DBConnect objDB = new DBConnect();
-            String sqlStr = "UPDATE TP_Users SET Password='" + newPass + "' WHERE EmailAddress='" + userEmail + "'";
+            String sqlStr = "UPDATE TP_Users SET Password='" + encryptedPassword + "' WHERE EmailAddress='" + userEmail + "'";
             int result = objDB.DoUpdate(sqlStr);
 
             if(result == -1)
