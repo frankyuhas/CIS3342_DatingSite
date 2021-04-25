@@ -71,6 +71,7 @@
     <Content Include="CSS\signin.css" />
     <Content Include="DatingClient.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="ForgotPassword.aspx" />
     <Content Include="ImageGrab.aspx" />
     <Content Include="Matches.aspx" />
     <Content Include="Messages.aspx" />
@@ -104,6 +105,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="ImageGrab.aspx.cs">
       <DependentUpon>ImageGrab.aspx</DependentUpon>

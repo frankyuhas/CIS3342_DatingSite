@@ -41,6 +41,8 @@
             </div>--%>
             <asp:button ID="btnSubmit_signin" class="w-100 btn btn-lg btn-primary" runat="server" type="submit" Text="Sign In" OnClick="btnSubmit_signin_Click"/>
             <asp:Button ID="btnCreate_Account" class="btn btn-link" runat="server" Text="Create Account" OnClick="btnCreate_Account_Click" />
+            <asp:Button ID="btnForgotPassword" runat="server" Text="Forgot Password" CssClass="btn btn-link" OnClick="btnForgotPassword_Click" />
+
             
         
         </form>

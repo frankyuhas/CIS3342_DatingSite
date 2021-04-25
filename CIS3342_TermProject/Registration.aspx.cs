@@ -43,12 +43,20 @@ namespace CIS3342_TermProject
                 newUser.Bio = txtBio.Text;
                 newUser.Location = ddlState.SelectedItem.ToString();
                 newUser.Password = txtPassword.Text;
+                newUser.SecAnswer1 = txtSecQuestion1.Text;
+                newUser.SecAnswer2 = txtSecQuestion2.Text;
+                newUser.SecAnswer3 = txtSecQuestion3.Text;
+
+
                 DatingAppWebService.DatingApp proxy = new DatingAppWebService.DatingApp();
+                
+
                 userId = proxy.AddNewUser(newUser);
             }
 
             uploadPhotoToDB(userId);
 
+            
             Response.Redirect("Default.aspx");
 
             //if(userId == 0)

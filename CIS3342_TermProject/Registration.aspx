@@ -178,6 +178,25 @@
                     </div>
                 </div>
                 <div class="row p-2 mx-auto">
+                    <div class="col">
+                        <asp:Label ID="lblSecQuestion1" runat="server" Text="What town were you born in?"></asp:Label>
+                        <asp:TextBox ID="txtSecQuestion1" runat="server"></asp:TextBox>
+                    </div>
+                </div>
+                  <div class="row p-2 mx-auto">
+                    <div class="col">
+                        <asp:Label ID="lblSecQuestion2" runat="server" Text="What is the name of your first pet?"></asp:Label>
+                        <asp:TextBox ID="txtSecQuestion2" runat="server"></asp:TextBox>
+                    </div>
+                </div>
+                  <div class="row p-2 mx-auto">
+                    <div class="col">
+                        <asp:Label ID="lblSecQuestion3" runat="server" Text="What high school did you attend?"></asp:Label>
+                        <asp:TextBox ID="txtSecQuestion3" runat="server"></asp:TextBox>
+                    </div>
+                </div>
+
+                <div class="row p-2 mx-auto">
                     <div class="col" style="text-align: center;">
                         <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-danger" OnClick="btnSubmit_Click"/>
                     </div>

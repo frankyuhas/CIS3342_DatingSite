@@ -41,6 +41,10 @@ namespace DatingAppWebService
                 addUserCmd.Parameters.AddWithValue("@location", newUser.Location);
                 addUserCmd.Parameters.AddWithValue("@bio", newUser.Bio);
                 addUserCmd.Parameters.AddWithValue("@password", newUser.Password);
+                addUserCmd.Parameters.AddWithValue("@secAnswer1", newUser.SecAnswer1);
+                addUserCmd.Parameters.AddWithValue("@secAnswer2", newUser.SecAnswer2);
+                addUserCmd.Parameters.AddWithValue("@secAnswer3", newUser.SecAnswer3);
+                addUserCmd.Parameters.AddWithValue("@isVerified", 0);
 
                 DataSet data = objDB.GetDataSetUsingCmdObj(addUserCmd);
 
