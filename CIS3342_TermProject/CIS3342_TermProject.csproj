@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="Verification.aspx.designer.cs">
       <DependentUpon>Verification.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
