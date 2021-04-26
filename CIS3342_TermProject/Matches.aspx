@@ -21,7 +21,7 @@
     <br />
     <div class="container">
         <h3>Your Matches</h3>
-        <asp:GridView ID="gvMatches" runat="server" AutoGenerateColumns="False" CssClass="table border-0 table-responsive" OnRowCommand="gvMatches_RowCommand">
+        <asp:GridView ID="gvMatches" runat="server" AutoGenerateColumns="False" CssClass="table border-0 table-responsive" AutoGenerateSelectButton="True" OnSelectedIndexChanged="gvMatches_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="UserName" HeaderText="Name" />
                 <asp:ImageField DataImageUrlField="imgFile" HeaderText="Profile Picture">
@@ -34,12 +34,47 @@
 				        <%# CalculateAge(Convert.ToDateTime(Eval("Birthday"))) %>
 			        </itemtemplate>
                 </asp:TemplateField>
-                
-                <asp:ButtonField HeaderText="Message" Text="Message" ButtonType="Button"/>
+                <asp:TemplateField HeaderText="Message">
+                      <ItemTemplate>
+                          <asp:Button ID="btnMessage" runat="server" class="btn btn-danger" Text="Message" CommandName="Message" OnClick="btnMessage_Click" />
+                      </ItemTemplate>
+                  </asp:TemplateField>
+<%--                <asp:ButtonField HeaderText="Message" Text="Message" ButtonType="Button" CommandName="Message" OnClick="btnMessage_Click"/>--%>
                 
             </Columns>
         </asp:GridView>
 
     </div>
+
+    <div class="container-fluid align-top" id="displayUser" style="padding-top: 75px;" runat="server">
+
+          <div class="card w-50 mx-auto">
+              <div class="card-body mx-auto w-100">
+                  <div class="row mx-auto">
+                      <div class="col">
+                          <img ID="profilePicture" runat="server" src="" style="height: 300px; width: 300px;"/>    
+                      </div>
+                  </div>
+                  <div class="row mx-auto">
+                      <div class="col mx-auto">
+                          <asp:Label ID="lblUserName" runat="server" Text="" CssClass="h2"></asp:Label>
+                      </div>
+                      <div class="col mx-auto">
+                          <asp:Label ID="lblAge" runat="server" Text="" CssClass="h2"></asp:Label>
+                      </div>
+                  </div>
+                  <div class="row mx-auto">
+                      <div class="col mx-auto">
+                          <asp:Label ID="lblGender" runat="server" Text=""></asp:Label>
+                          <br />
+                          <asp:Label ID="lblLocation" runat="server" Text=""></asp:Label>
+                          <br />
+                          <asp:Label ID="lblBio" runat="server" Text=""></asp:Label>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+      </div>
     
 </asp:Content>
