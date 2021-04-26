@@ -19,5 +19,11 @@ namespace CIS3342_TermProject
             Response.Redirect("Default.aspx");
             Session.Clear();
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Default.aspx");
+        }
     }
 }
